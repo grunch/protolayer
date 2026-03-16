@@ -1,0 +1,417 @@
+---
+// ProtoLayer landing page
+const title = 'ProtoLayer OÜ - Building modular digital infrastructure';
+const description = 'Estonian technology company focused on open-source software, digital infrastructure, and modular technical systems.';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style is:global>
+    :root {
+      /* Fonts */
+      --font-display: 'Sora', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      /* Colors - Light Mode */
+      --accent: hsl(160, 84%, 39%);
+      --ring: hsl(160, 84%, 39%);
+      --background: hsl(0, 0%, 98%);
+      --foreground: hsl(0, 0%, 9%);
+      --card: hsl(0, 0%, 100%);
+      --primary: hsl(0, 0%, 0%);
+      --primary-fg: hsl(0, 0%, 100%);
+      --secondary: hsl(0, 0%, 96%);
+      --muted: hsl(0, 0%, 96%);
+      --muted-fg: hsl(0, 0%, 45%);
+      --border: hsl(0, 0%, 90%);
+      --destructive: hsl(0, 84%, 60%);
+      
+      /* Terminal */
+      --terminal-bg: hsl(0, 0%, 6%);
+      --terminal-text: hsl(160, 84%, 60%);
+      --terminal-border: hsl(0, 0%, 20%);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: hsl(0, 0%, 4%);
+        --foreground: hsl(0, 0%, 98%);
+        --card: hsl(0, 0%, 6%);
+        --primary: hsl(0, 0%, 98%);
+        --primary-fg: hsl(0, 0%, 4%);
+        --secondary: hsl(0, 0%, 12%);
+        --muted: hsl(0, 0%, 12%);
+        --muted-fg: hsl(0, 0%, 60%);
+        --border: hsl(0, 0%, 16%);
+      }
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, var(--accent) 0%, transparent 50%);
+      opacity: 0.03;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--foreground) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      color: var(--muted-fg);
+      margin-bottom: 3rem;
+      font-weight: 500;
+    }
+    
+    .hero-description {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--muted-fg);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+    
+    /* Terminal */
+    .terminal {
+      background: var(--terminal-bg);
+      border: 1px solid var(--terminal-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 3rem auto;
+      max-width: 600px;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--terminal-text);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .terminal-header {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--muted-fg);
+      opacity: 0.5;
+    }
+    
+    .terminal-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .terminal-prompt {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    .terminal-command {
+      color: var(--terminal-text);
+    }
+    
+    /* Section */
+    section {
+      padding: 6rem 0;
+      position: relative;
+    }
+    
+    section h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .section-emoji {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+    }
+    
+    .section-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    
+    .card p {
+      color: var(--muted-fg);
+      line-height: 1.8;
+    }
+    
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--muted-fg);
+      font-size: 0.9rem;
+    }
+    
+    /* Links */
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    
+    a:hover {
+      opacity: 0.8;
+    }
+    
+    /* Utility */
+    .text-accent {
+      color: var(--accent);
+    }
+    
+    .text-muted {
+      color: var(--muted-fg);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      section {
+        padding: 4rem 0;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>ProtoLayer OÜ</h1>
+      <p class="hero-subtitle">Building modular digital infrastructure.</p>
+      
+      <p class="hero-description">
+        ProtoLayer OÜ is an Estonian technology company focused on the development and support of open-source software, digital infrastructure, and modular technical systems.
+      </p>
+      
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+        </div>
+        <div class="terminal-content">
+          <span class="terminal-prompt">$</span>
+          <span class="terminal-command">git clone https://github.com/MostroP2P/mostro</span>
+        </div>
+      </div>
+      
+      <p class="hero-description" style="margin-top: 2rem;">
+        We design and operate technical layers that enable resilient, interoperable, and scalable digital systems.<br>
+        Our work spans open-source software, protocol experimentation, and infrastructure-oriented projects.
+      </p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="section-content">
+        <h2><span class="section-emoji">🧠</span> About</h2>
+        
+        <div class="card">
+          <h3>About ProtoLayer</h3>
+          <p>
+            ProtoLayer OÜ is a private limited company registered in Estonia.
+            The company operates as a technology infrastructure entity supporting the development, maintenance, and coordination of digital systems and open-source initiatives.
+          </p>
+          <p style="margin-top: 1rem;">
+            Founded in 2026, ProtoLayer focuses on modular architecture, distributed systems, and technical experimentation aimed at building foundational layers for emerging digital ecosystems.
+          </p>
+          <p style="margin-top: 1rem;">
+            <strong>Founder:</strong> <span class="text-accent">Francisco Calderon</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-content">
+        <h2><span class="section-emoji">🧩</span> Projects</h2>
+        
+        <p style="margin-bottom: 2rem; color: var(--muted-fg);">
+          ProtoLayer OÜ supports and operates technical initiatives in the field of decentralized and open digital infrastructure.
+        </p>
+        
+        <div class="card">
+          <h3>Mostro</h3>
+          <p>
+            An open-source peer-to-peer protocol and infrastructure project focused on resilient digital exchange systems.
+          </p>
+          <p style="margin-top: 1rem;">
+            <a href="https://mostro.network" target="_blank" rel="noopener">mostro.network →</a>
+          </p>
+        </div>
+        
+        <p style="margin-top: 2rem; color: var(--muted-fg); font-style: italic;">
+          (More projects coming soon.)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal Section -->
+  <section id="legal">
+    <div class="container">
+      <div class="section-content">
+        <h2><span class="section-emoji">⚖️</span> Legal</h2>
+        
+        <div class="card">
+          <h3>Legal Information</h3>
+          <p>
+            <strong>Registered Name:</strong> ProtoLayer OÜ<br>
+            <strong>Registry Code:</strong> [ADD WHEN AVAILABLE]<br>
+            <strong>Registered Address:</strong> [SUNIO ADDRESS]<br>
+            <strong>Jurisdiction:</strong> Republic of Estonia<br>
+            <strong>Contact:</strong> <a href="mailto:contact@protolayer.ee">contact@protolayer.ee</a>
+          </p>
+          <p style="margin-top: 1rem;">
+            ProtoLayer OÜ operates in accordance with Estonian and European Union regulations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-content">
+        <h2><span class="section-emoji">📩</span> Contact</h2>
+        
+        <div class="card">
+          <p style="font-size: 1.125rem;">
+            For general inquiries:<br>
+            <a href="mailto:contact@protolayer.ee" style="font-size: 1.25rem; font-weight: 600;">contact@protolayer.ee</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 ProtoLayer OÜ. Building modular digital infrastructure.</p>
+      <p style="margin-top: 0.5rem;">
+        <a href="#about">About</a> · 
+        <a href="#projects">Projects</a> · 
+        <a href="#legal">Legal</a> · 
+        <a href="#contact">Contact</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
