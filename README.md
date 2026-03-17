@@ -1,6 +1,6 @@
-# ProtoLayer OÜ - Landing Page
+# ProtoLayer - Landing Page
 
-Official website for ProtoLayer OÜ, an Estonian technology company focused on open-source software and digital infrastructure.
+Official website for ProtoLayer, a technology company focused on open-source software and digital infrastructure.
 
 ## Tech Stack
 
@@ -66,4 +66,4 @@ Push to `main` branch to trigger automatic deployment.
 
 ## License
 
-© 2026 ProtoLayer OÜ
+MIT
