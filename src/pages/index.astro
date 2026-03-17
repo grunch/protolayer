@@ -140,10 +140,28 @@ const description = 'Estonian technology company focused on open-source software
       font-weight: 800;
       margin-bottom: 1.5rem;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--foreground) 0%, var(--accent) 100%);
+    }
+    
+    .highlight {
+      background: linear-gradient(90deg, 
+        hsl(160, 84%, 39%), 
+        hsl(160, 84%, 50%), 
+        hsl(160, 84%, 30%), 
+        hsl(160, 84%, 55%), 
+        hsl(160, 84%, 35%), 
+        hsl(160, 84%, 39%)
+      );
+      background-size: 300% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: gradient-shift 6s ease-in-out infinite;
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     
     .hero-subtitle {
@@ -378,7 +396,7 @@ const description = 'Estonian technology company focused on open-source software
         <source src="/logo.mp4" type="video/mp4">
       </video>
       
-      <h1>ProtoLayer</h1>
+      <h1><span class="highlight">ProtoLayer</span></h1>
       <p class="hero-subtitle">Building modular digital infrastructure.</p>
       
       <p class="hero-description">
