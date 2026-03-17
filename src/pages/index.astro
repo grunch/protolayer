@@ -535,23 +535,49 @@ const description = 'Estonian technology company focused on open-source software
 
   <!-- Theme Toggle Script -->
   <script>
-    // Initialize theme from localStorage or default to light
     const themeToggle = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
     
-    // Check for saved theme preference or default to 'light'
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    htmlElement.classList.remove('light', 'dark');
-    htmlElement.classList.add(currentTheme);
+    // Smart theme detection with fallback chain:
+    // 1. User's saved preference (localStorage)
+    // 2. OS/browser preference (prefers-color-scheme)
+    // 3. Default to light mode
+    function getInitialTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        return savedTheme;
+      }
+      
+      // Check OS preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return prefersDark ? 'dark' : 'light';
+    }
+    
+    // Apply theme
+    function applyTheme(theme) {
+      htmlElement.classList.remove('light', 'dark');
+      htmlElement.classList.add(theme);
+    }
+    
+    // Initialize with smart detection
+    const initialTheme = getInitialTheme();
+    applyTheme(initialTheme);
     
     // Toggle theme on button click
     themeToggle?.addEventListener('click', () => {
       const isDark = htmlElement.classList.contains('dark');
       const newTheme = isDark ? 'light' : 'dark';
       
-      htmlElement.classList.remove('light', 'dark');
-      htmlElement.classList.add(newTheme);
+      applyTheme(newTheme);
       localStorage.setItem('theme', newTheme);
+    });
+    
+    // Listen for OS theme changes (optional: auto-switch if user hasn't set preference)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      // Only auto-switch if user hasn't manually set a preference
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
     });
   </script>
 </body>
