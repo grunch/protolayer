@@ -1,5 +1,7 @@
 ---
 // ProtoLayer landing page
+import NetworkBackground from '../components/NetworkBackground.astro';
+
 const title = 'ProtoLayer OÜ - Building modular digital infrastructure';
 const description = 'Estonian technology company focused on open-source software, digital infrastructure, and modular technical systems.';
 ---
@@ -190,6 +192,7 @@ const description = 'Estonian technology company focused on open-source software
     section {
       padding: 6rem 0;
       position: relative;
+      z-index: 1;
     }
     
     section h2 {
@@ -241,6 +244,8 @@ const description = 'Estonian technology company focused on open-source software
       text-align: center;
       color: var(--muted-fg);
       font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
     }
     
     /* Links */
@@ -340,6 +345,9 @@ const description = 'Estonian technology company focused on open-source software
 </head>
 
 <body>
+  <!-- Animated Network Background -->
+  <NetworkBackground />
+  
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
