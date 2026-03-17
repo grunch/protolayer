@@ -119,6 +119,22 @@ const description = 'Estonian technology company focused on open-source software
       max-width: 900px;
     }
     
+    .hero-logo {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin: 0 auto 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-logo {
+        max-width: 280px;
+      }
+    }
+    
     .hero h1 {
       font-size: clamp(3rem, 8vw, 5rem);
       font-weight: 800;
@@ -351,6 +367,18 @@ const description = 'Estonian technology company focused on open-source software
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
+      <!-- Logo Video -->
+      <video
+        class="hero-logo"
+        autoplay
+        loop
+        muted
+        playsinline
+        poster="/logo-poster.jpg"
+      >
+        <source src="/logo.mp4" type="video/mp4">
+      </video>
+      
       <h1>ProtoLayer OÜ</h1>
       <p class="hero-subtitle">Building modular digital infrastructure.</p>
       
